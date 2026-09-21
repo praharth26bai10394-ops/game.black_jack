@@ -6,3 +6,6 @@ class Card:
 
     def __str__(self):
         return self.rank + " of " + self.suit
+cards = Card("Spades", "A")
+
+print(cards)
