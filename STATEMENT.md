@@ -62,3 +62,58 @@ The main objectives of this project are:
 ---
 
 ## 4. Scope of the Project
+
+### 4.1 Included in the Scope
+
+The project will include:
+
+- Representation of individual playing cards.
+- Creation of a standard 52-card deck.
+- Four card suits:
+  - Hearts
+  - Diamonds
+  - Clubs
+  - Spades
+- Thirteen card ranks:
+  - 2 to 10
+  - Jack
+  - Queen
+  - King
+  - Ace
+- Shuffling of the deck.
+- Dealing cards from the deck.
+- Maintaining the player's hand.
+- Maintaining the dealer's hand.
+- Calculating the player's score.
+- Calculating the dealer's score.
+- Handling the special scoring rule of the Ace.
+- Player choice between Hit and Stand.
+- Dealer decision according to the implemented game rule.
+- Detection of Blackjack and scores exceeding 21.
+- Comparison of player and dealer scores.
+- Displaying the result of a round.
+- Option to play another round.
+- Basic input validation.
+- Basic testing of important program components.
+
+### 4.2 Outside the Scope
+
+The initial version of the project will not include:
+
+- Real-money betting.
+- Online gambling.
+- Multiplayer functionality.
+- Online accounts or user registration.
+- Online leaderboards.
+- Internet-based gameplay.
+- Database connectivity.
+- A graphical user interface.
+- Mobile application functionality.
+- Online multiplayer servers.
+
+The project will focus on creating a functional and understandable
+command-line Blackjack simulation using Python.
+
+---
+
+## 5. Target Users
