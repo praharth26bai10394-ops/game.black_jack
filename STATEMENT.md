@@ -98,7 +98,7 @@ The project will include:
 
 ### 4.2 Outside the Scope
 
-The initial version of the project will not include:
+This project will not include :
 
 - Real-money betting.
 - Online gambling.
@@ -106,7 +106,6 @@ The initial version of the project will not include:
 - Online accounts or user registration.
 - Online leaderboards.
 - Internet-based gameplay.
-- Database connectivity.
 - A graphical user interface.
 - Mobile application functionality.
 - Online multiplayer servers.
