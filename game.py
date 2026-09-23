@@ -1,4 +1,4 @@
-from deck import Deck
+import random
 
 
 def card_value(card):
@@ -39,6 +39,15 @@ def show_cards(cards):
         print(card.rank, "of", card.suit)
 
 
+def draw_card(deck):
+
+    position = random.choice(range(len(deck.cards)))
+
+    card = deck.cards.pop(position)
+
+    return card
+
+
 def player_turn(deck, player_cards):
 
     while True:
@@ -51,6 +60,7 @@ def player_turn(deck, player_cards):
         print("Your score:", score)
 
         if score > 21:
+
             print("You went over 21.")
             break
 
@@ -58,7 +68,7 @@ def player_turn(deck, player_cards):
 
         if choice == "yes":
 
-            card = deck.cards.pop()
+            card = draw_card(deck)
             player_cards.append(card)
 
         elif choice == "no":
@@ -76,7 +86,7 @@ def dealer_turn(deck, dealer_cards):
 
     while calculate_score(dealer_cards) < 17:
 
-        card = deck.cards.pop()
+        card = draw_card(deck)
         dealer_cards.append(card)
 
     print("\nDealer's cards:")
@@ -112,40 +122,23 @@ def find_winner(player_cards, dealer_cards):
 
         print("It is a draw.")
 
-    print("============================")
 
 
-def start_game():
 
-    print("================================")
-    print("         21 CARD GAME")
-    print("================================")
+# Testing Module 3
 
-    deck = Deck()
+# from deck import Deck
 
-    player_cards = []
-    dealer_cards = []
+# deck = Deck()
 
-    player_cards.append(deck.cards.pop())
-    player_cards.append(deck.cards.pop())
+# player_cards = []
 
-    dealer_cards.append(deck.cards.pop())
-    dealer_cards.append(deck.cards.pop())
+# player_cards.append(draw_card(deck))
+# player_cards.append(draw_card(deck))
 
-    print("\nYour starting cards:")
-    show_cards(player_cards)
+# print("Player cards:")
+# show_cards(player_cards)
 
-    print("Your score:", calculate_score(player_cards))
+# print("Player score:", calculate_score(player_cards))
 
-    player_turn(deck, player_cards)
-
-    if calculate_score(player_cards) <= 21:
-
-        dealer_turn(deck, dealer_cards)
-
-        find_winner(player_cards, dealer_cards)
-
-    else:
-
-        print("\nGame over.")
-        print("Your score went over 21.")
+# print("Cards remaining in deck:", len(deck.cards))
