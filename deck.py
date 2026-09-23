@@ -17,11 +17,7 @@ class Deck:
                 self.cards.append(Card(suit, rank))
 
 
-# Testing the module
+# Testing Module 2
 
-deck = Deck()
-
-print("Number of cards:", len(deck.cards))
-
-for card in deck.cards:
-    print(card.rank, "of", card.suit)
+# deck = Deck()
+# print("Number of cards:", len(deck.cards))
