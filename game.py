@@ -118,8 +118,6 @@ def find_winner(player_cards, dealer_cards):
 
 deck = Deck()
 
-deck.shuffle()
-
 player_cards = []
 dealer_cards = []
 
