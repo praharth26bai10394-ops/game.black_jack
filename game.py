@@ -1,111 +1,171 @@
 from deck import Deck
 
 
-def calculate_score(cards):
-    score = 0
-    aces = 0
+S = input("Type T to start the game: ")
 
-    for card in cards:
-        if card.rank == "J" or card.rank == "Q" or card.rank == "K":
-            score += 10
-        elif card.rank == "A":
-            score += 11
-            aces += 1
-        else:
-            score += int(card.rank)
+if S.upper() == "T":
 
-    while score > 21 and aces > 0:
-        score -= 10
-        aces -= 1
-
-    return score
-
-
-def show_cards(cards):
-    for card in cards:
-        print(card)
-
-
-def play_game():
     deck = Deck()
     deck.shuffle()
 
+    # Player cards
     player_cards = []
-    dealer_cards = []
-
     player_cards.append(deck.deal_card())
     player_cards.append(deck.deal_card())
 
-    dealer_cards.append(deck.deal_card())
-    dealer_cards.append(deck.deal_card())
+    # Banker cards
+    banker_cards = []
+    banker_cards.append(deck.deal_card())
+    banker_cards.append(deck.deal_card())
 
-    print("\n===== BLACKJACK =====")
+    print("\n--- NEW GAME ---")
 
-    print("\nYour cards:")
-    show_cards(player_cards)
+    print("Your cards are:", player_cards[0], "and", player_cards[1])
+    print("Banker shows:", banker_cards[0], "and [Hidden Card]")
 
-    print("Your score:", calculate_score(player_cards))
+    # Calculate player's total
+    player_total = 0
 
-    print("\nDealer's first card:")
-    print(dealer_cards[0])
+    for card in player_cards:
 
-    while calculate_score(player_cards) < 21:
+        if card.rank == "J" or card.rank == "Q" or card.rank == "K":
+            player_total = player_total + 10
 
-        choice = input("\nDo you want another card? (yes/no): ")
-
-        if choice.lower() == "yes":
-            player_cards.append(deck.deal_card())
-
-            print("\nYour cards:")
-            show_cards(player_cards)
-
-            print("Your score:", calculate_score(player_cards))
+        elif card.rank == "A":
+            player_total = player_total + 11
 
         else:
+            player_total = player_total + int(card.rank)
+
+    if player_total == 22:
+        player_total = 12
+
+    print("Your total is:", player_total)
+
+    # Player's turn
+    while player_total < 21:
+
+        ctu = input("Hit, Stand, OR Double? ").lower()
+
+        if ctu == "hit":
+
+            card = deck.deal_card()
+            player_cards.append(card)
+
+            print("\nYou drew:", card)
+
+            if card.rank == "J" or card.rank == "Q" or card.rank == "K":
+                player_total = player_total + 10
+
+            elif card.rank == "A":
+                player_total = player_total + 11
+
+            else:
+                player_total = player_total + int(card.rank)
+
+            if player_total > 21 and card.rank == "A":
+                player_total = player_total - 10
+
+            print("Your new total is:", player_total)
+
+        elif ctu == "stand":
+
             break
 
-    player_score = calculate_score(player_cards)
+        elif ctu == "double":
 
-    if player_score > 21:
-        print("\nYou went over 21!")
-        print("Dealer wins.")
-        return
+            card = deck.deal_card()
+            player_cards.append(card)
 
-    while calculate_score(dealer_cards) < 17:
-        dealer_cards.append(deck.deal_card())
+            print("\nYou doubled down!")
+            print("You drew:", card)
 
-    dealer_score = calculate_score(dealer_cards)
+            if card.rank == "J" or card.rank == "Q" or card.rank == "K":
+                player_total = player_total + 10
 
-    print("\nDealer's cards:")
-    show_cards(dealer_cards)
+            elif card.rank == "A":
+                player_total = player_total + 11
 
-    print("Dealer's score:", dealer_score)
+            else:
+                player_total = player_total + int(card.rank)
 
-    print("\n===== RESULT =====")
+            if player_total > 21 and card.rank == "A":
+                player_total = player_total - 10
 
-    if dealer_score > 21:
-        print("Dealer went over 21!")
-        print("You win!")
+            print("Your final total is:", player_total)
 
-    elif player_score > dealer_score:
-        print("You win!")
+            break
 
-    elif player_score < dealer_score:
-        print("Dealer wins!")
+        else:
+
+            print("Invalid input. Please type Hit, Stand, or Double.")
+
+    # Check player's result
+    if player_total > 21:
+
+        print("\nBust! You went over 21. Banker wins.")
 
     else:
-        print("It's a tie!")
+
+        print("\nBanker reveals hidden card:", banker_cards[1])
+
+        # Calculate banker's total
+        banker_total = 0
+
+        for card in banker_cards:
+
+            if card.rank == "J" or card.rank == "Q" or card.rank == "K":
+                banker_total = banker_total + 10
+
+            elif card.rank == "A":
+                banker_total = banker_total + 11
+
+            else:
+                banker_total = banker_total + int(card.rank)
+
+        if banker_total == 22:
+            banker_total = 12
+
+        # Banker's turn
+        while banker_total < 17:
+
+            card = deck.deal_card()
+            banker_cards.append(card)
+
+            print("Banker hits and draws:", card)
+
+            if card.rank == "J" or card.rank == "Q" or card.rank == "K":
+                banker_total = banker_total + 10
+
+            elif card.rank == "A":
+                banker_total = banker_total + 11
+
+            else:
+                banker_total = banker_total + int(card.rank)
+
+            if banker_total > 21 and card.rank == "A":
+                banker_total = banker_total - 10
+
+        print("Banker's final total is:", banker_total)
+
+        # Final result
+        if banker_total > 21:
+
+            print("\nBanker busts! You win!")
+
+        elif player_total > banker_total:
+
+            print("\nYou win!")
+
+        elif banker_total > player_total:
+
+            print("\nBanker wins!")
+
+        else:
+
+            print("\nIt's a tie (Push)!")
 
 
-play_game()
+else:
 
-# testing the game module
-
-# deck = Deck()
-
-# print("Number of cards:", len(deck.cards))
-
-# deck.shuffle()
-
-# print("First card:", deck.deal_card())
-# print("Cards remaining:", len(deck.cards))
+    print("Game Did Not Start")
