@@ -51,6 +51,7 @@ def player_turn(deck, player_cards):
         print("Your score:", score)
 
         if score > 21:
+
             print("You went over 21.")
             break
 
@@ -115,37 +116,28 @@ def find_winner(player_cards, dealer_cards):
     print("============================")
 
 
-def start_game():
+deck = Deck()
 
-    print("================================")
-    print("         21 CARD GAME")
-    print("================================")
+deck.shuffle()
 
-    deck = Deck()
+player_cards = []
+dealer_cards = []
 
-    player_cards = []
-    dealer_cards = []
+player_cards.append(deck.cards.pop())
+player_cards.append(deck.cards.pop())
 
-    player_cards.append(deck.cards.pop())
-    player_cards.append(deck.cards.pop())
+dealer_cards.append(deck.cards.pop())
+dealer_cards.append(deck.cards.pop())
 
-    dealer_cards.append(deck.cards.pop())
-    dealer_cards.append(deck.cards.pop())
+player_turn(deck, player_cards)
 
-    print("\nYour starting cards:")
-    show_cards(player_cards)
+if calculate_score(player_cards) <= 21:
 
-    print("Your score:", calculate_score(player_cards))
+    dealer_turn(deck, dealer_cards)
 
-    player_turn(deck, player_cards)
+    find_winner(player_cards, dealer_cards)
 
-    if calculate_score(player_cards) <= 21:
+else:
 
-        dealer_turn(deck, dealer_cards)
-
-        find_winner(player_cards, dealer_cards)
-
-    else:
-
-        print("\nGame over.")
-        print("Your score went over 21.")
+    print("\nGame over.")
+    print("Your score went over 21.")
