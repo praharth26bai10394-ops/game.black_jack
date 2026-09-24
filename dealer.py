@@ -19,10 +19,10 @@ class Dealer:
 
 # Testing Module 5
 
-deck = Deck()
-dealer = Dealer()
+# deck = Deck()
+# dealer = Dealer()
 
-dealer.deal_card(deck)
-dealer.deal_card(deck)
+# dealer.deal_card(deck)
+# dealer.deal_card(deck)
 
-dealer.show_cards()
+# dealer.show_cards()
