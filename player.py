@@ -17,16 +17,16 @@ class Player:
 
 # Testing Module 4
 
-# from deck import Deck
+from deck import Deck
 
-# deck = Deck()
+deck = Deck()
 
-# player = Player("Praharth")
+player = Player("Praharth")
 
-# player.add_card(deck.cards.pop())
-# player.add_card(deck.cards.pop())
+player.add_card(deck.cards.pop())
+player.add_card(deck.cards.pop())
 
-# print("Player name:", player.name)
+print("Player name:", player.name)
 
-# print("Player cards:")
-# player.show_cards()
+print("Player cards:")
+player.show_cards()

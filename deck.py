@@ -1,3 +1,4 @@
+import random
 from cards import Card
 
 
@@ -15,6 +16,12 @@ class Deck:
             for rank in ranks:
 
                 self.cards.append(Card(suit, rank))
+
+    def deal(self):
+
+        card = random.choice(self.cards)
+        self.cards.remove(card)
+        return card
 
 
 # Testing Module 2

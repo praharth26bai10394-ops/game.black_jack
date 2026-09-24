@@ -127,18 +127,36 @@ def find_winner(player_cards, dealer_cards):
 
 # Testing Module 3
 
-# from deck import Deck
+from deck import Deck
 
-# deck = Deck()
+deck = Deck()
 
-# player_cards = []
+player_cards = []
 
-# player_cards.append(draw_card(deck))
-# player_cards.append(draw_card(deck))
+player_cards.append(draw_card(deck))
+player_cards.append(draw_card(deck))
 
-# print("Player cards:")
-# show_cards(player_cards)
+print("Player cards:")
+show_cards(player_cards)
 
-# print("Player score:", calculate_score(player_cards))
+print("Player score:", calculate_score(player_cards))
 
-# print("Cards remaining in deck:", len(deck.cards))
+print("Cards remaining in deck:", len(deck.cards))
+
+# Testing code 
+
+from deck import Deck
+
+deck = Deck()
+
+player_cards = []
+
+player_cards.append(draw_card(deck))
+player_cards.append(draw_card(deck))
+
+print("Player cards:")
+show_cards(player_cards)
+
+print("Player score:", calculate_score(player_cards))
+
+print("Cards remaining in deck:", len(deck.cards))
