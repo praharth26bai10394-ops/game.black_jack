@@ -17,7 +17,7 @@ class Dealer:
             print(card)
 
 
-# Testing Module 5
+# Testing code
 
 # deck = Deck()
 # dealer = Dealer()

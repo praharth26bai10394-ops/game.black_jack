@@ -15,7 +15,7 @@ class Player:
         self.cards.append(card)
 
 
-# Testing Module 4
+# Testing code
 
 # from deck import Deck
 

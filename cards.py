@@ -7,7 +7,7 @@ class Card:
     def __str__(self):
         return self.rank + " of " + self.suit
 
-# testing the module
+# Testing code
 # cards = Card("Spades", "A")
 
 # print(cards)

@@ -24,7 +24,7 @@ class Deck:
         return card
 
 
-# Testing Module 2
+# Testing code
 
 # deck = Deck()
 # print("Number of cards:", len(deck.cards))
