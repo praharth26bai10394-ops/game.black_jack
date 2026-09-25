@@ -104,9 +104,9 @@ The project uses Pythons built-in 'random' module
 
 ## How to Run
 
-1) Install Python on your computer
+1) Install Python 3.10 or newer
 
-2) Download or clone this repository
+2) Download or clone this repository: https://github.com/praharth26bai10394-ops/game.black_jack
 
 3) Open the project folder in a terminal
 
